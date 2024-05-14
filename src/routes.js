@@ -7,23 +7,28 @@ import ErrorPage from "./pages/ErrorPage";
 const routes = [
   {
     path: "/",
-    element: <Home />,
-    errorElement: <ErrorPage />
-  }, 
-  {
-    path: "/about",
-    element: <About />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: "/login",
-    element: <Login />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: "/profile/:id",
-    element: <UserProfile />,
-    errorElement: <ErrorPage />
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+         {
+            path: "/",
+            element: <Home />,
+            children: [
+                {
+                    path: "/profile/:id",
+                    element: <UserProfile />
+                }
+            ]
+        }, 
+        {
+            path: "/about",
+            element: <About />
+        },
+        {
+            path: "/login",
+            element: <Login />
+        }
+    ]
   }
 ];
 
